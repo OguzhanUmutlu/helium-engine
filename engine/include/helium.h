@@ -75,6 +75,14 @@ extern EngineStruct Engine;
 #define SetMouseWheel(F) Engine.mouseWheelFunc = F
 #define SetQuit(F) Engine.quitFunc = F
 
+#define WindowSetTitle(title) SDL_SetWindowTitle(Engine.sdl_window, title)
+#define WindowSetIcon(path)                                                    \
+    do {                                                                       \
+        SDL_Surface *s = IMG_Load(temp);                                       \
+        SDL_SetWindowIcon(Engine.sdl_window, s);                               \
+        SDL_FreeSurface(s);                                                    \
+    } while (0)
+
 #define Crash(...)                                                             \
     printf("Engine Crashed\n" __VA_ARGS__);                                    \
     QuitEngine(1)
@@ -87,7 +95,7 @@ void QuitEngine(int code);
         Engine.initFunc = Init;                                                \
         Engine.argc = argc;                                                    \
         Engine.argv = argv;                                                    \
-        __InitEngine(title);                                                     \
+        __InitEngine(title);                                                   \
     }
 
 #endif

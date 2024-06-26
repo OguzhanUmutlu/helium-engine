@@ -13,7 +13,7 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-version = "1.0.0"
+version = "1.0.1"
 
 script_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
 os_name = "win32" if platform.system() == "Windows" else "linux"

@@ -286,6 +286,9 @@ void Crash(...); // Macro. Arguments are same as printf(). Example: Crash("Hello
 
 void QuitEngine(int code); // Use this instead of exit()
 
+void WindowSetTitle(char *title); // Macro
+void WindowSetIcon(char *path); // Macro
+
 void AddSprite(Sprite *sprite);
 void RemoveSprite(Sprite *sprite);
 void ClearSprites();
