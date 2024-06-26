@@ -4,54 +4,73 @@
 
 ### Windows Installation
 
-- Install Python from: <https://www.python.org/downloads/>
-- Install the latest version of the engine from: <https://github.com/OguzhanUmutlu/helium-game-engine/releases/latest> (The file name should be in the form: Helium-X.X.X-win32.zip)
-- Extract the zip you've installed to a folder
-- Install MSYS2 from: <https://www.msys2.org/>
-- Run `pacman -Syu` in MSYS2 shell
-- Run `pacman -S mingw-w64-ucrt-x86_64-gcc`
-- Run `pacman -S mingw-w64-x86_64-SDL2`
-- Run `pacman -S mingw-w64-x86_64-SDL2_image`
-- And that's it! You can now continue on from [here](#making-the-game).
+1. Install Python from: [python.org](https://www.python.org/downloads/).
+2. Install the latest version of the engine from: [GitHub Releases](https://github.com/OguzhanUmutlu/helium-game-engine/releases/latest). (The file name should be in the form: `Helium-X.X.X-win32.zip`).
+3. Extract the downloaded zip file to a folder.
+4. Install MSYS2 from: [msys2.org](https://www.msys2.org/).
+5. Run the following commands in the MSYS2 shell:
+
+    ```sh
+    pacman -Syu
+    pacman -S mingw-w64-ucrt-x86_64-gcc
+    pacman -S mingw-w64-x86_64-SDL2
+    pacman -S mingw-w64-x86_64-SDL2_image
+    ```
+
+6. That's it! You can now continue from [here](#making-the-game).
 
 ### MacOS/Linux/WSL Installation
 
-- Install the latest version of the engine from: <https://github.com/OguzhanUmutlu/helium-game-engine/releases/latest> (The file name should be in the form: Helium-X.X.X-win32.zip)
-- Extract the zip you've installed to a folder
-- `sudo apt-get install python3`
-- `sudo apt-get install libsdl2-dev`
-- `sudo apt-get install libsdl2-image-dev`
-- And that's it! You can now continue on from [here](#making-the-game).
+1. Install the latest version of the engine from: [GitHub Releases](https://github.com/OguzhanUmutlu/helium-game-engine/releases/latest). (The file name should be in the form: `Helium-X.X.X-win32.zip`).
+2. Extract the downloaded zip file to a folder.
+3. Run the following commands:
 
-## Making the game
+    ```sh
+    sudo apt-get install python3
+    sudo apt-get install libsdl2-dev
+    sudo apt-get install libsdl2-image-dev
+    ```
 
-First make an empty folder in a place you desire your game to be.
+4. That's it! You can now continue from [here](#making-the-game).
 
-Create a C file(like main.c) and put this in as a starting point:
+## Making the Game
 
-```c
-#include <helium.h>
+1. Create an empty folder where you want your game to be.
+2. Create a C file (e.g., `main.c`) with the following starting point:
 
-void Init() {
-    printf("Hello, world!");
-}
+    ```c
+    #include <helium.h>
 
-HeliumInit("Title of the game goes here!", Init);
-```
+    void Init() {
+        printf("Hello, world!");
+    }
 
-Now open a terminal in the engine's folder that you've installed and run this replacing the `path/to/project` with your game's folder path: `python helium.py path/to/project`
+    HeliumInit("Title of the game goes here!", Init);
+    ```
 
-Example: `python helium.py C:/Users/User/Desktop/my-game`
+3. Open a terminal in the engine's folder and run the following command, replacing `path/to/project` with your game's folder path:
 
-Example: `python helium.py ~/my-game`
+    ```sh
+    python helium.py path/to/project
+    ```
 
-And that's it! You should now see an executable file in your game folder. (It should be located somewhere like this: my-game/bin/win32/my-game.exe or my-game/bin/linux/my-game)
+    Example:
 
-After running the executable file, if you're on Windows you should see a command prompt pop up with it, you can disable by putting a -w like this: `python helium.py C:/Users/User/Desktop/my-game -w`
+    ```sh
+    python helium.py C:/Users/User/Desktop/my-game
+    python helium.py ~/my-game
+    ```
 
-### Rendering a sprite
+4. You should now see an executable file in your game folder (e.g., `my-game/bin/win32/my-game.exe` or `my-game/bin/linux/my-game`).
+5. If you're on Windows and want to disable the command prompt that pops up with the executable, use:
 
-#### Creating a sprite
+    ```sh
+    python helium.py C:/Users/User/Desktop/my-game -w
+    ```
+
+### Rendering a Sprite
+
+#### Creating a Sprite
 
 ```c
 void Init() {
@@ -60,13 +79,13 @@ void Init() {
 }
 ```
 
-This will render the `ball.png` image on the top left corner of your screen and it should fall down the screen.
+This code will render the `ball.png` image at the top left corner of your screen, and it will fall down the screen.
 
-IMPORTANT: Your external files like images should all be located in the `assets` folder!
+**IMPORTANT:** Your external files like images should all be located in the `assets` folder!
 
-#### Sprite properties
+#### Sprite Properties
 
-This is the structure of the sprite:
+The structure of a sprite is as follows:
 
 ```c
 float x;
@@ -93,14 +112,13 @@ void Init() {
     // or
     InitSpriteRect(sprite, 10, 20, 50, 50);
 
-
     sprite->mass = 10;
 
     AddSprite(sprite);
 }
 ```
 
-### Making static walls around the screen so that the sprite doesn't fall of the screen
+### Making Static Walls Around the Screen
 
 ```c
 void Init() {
@@ -113,7 +131,7 @@ void Init() {
 }
 ```
 
-If you don't want to use the shortcut function `MakeWallsAroundScreen()` here's what it does:
+If you don't want to use the `MakeWallsAroundScreen()` function, here's what it does:
 
 ```c
 Sprite *AddInvisibleWall(float x, float y, float width, float height) {
@@ -132,9 +150,9 @@ void MakeWallsAroundScreen() {
 }
 ```
 
-### Implementing game logic
+### Implementing Game Logic
 
-You can create an Update function that runs constantly, or you can create a FixedUpdate function which also runs constantly but in a cycle.
+You can create an `Update` function that runs constantly, or a `FixedUpdate` function which also runs constantly but in a cycle.
 
 Example usage of both:
 
@@ -157,9 +175,8 @@ void Init() {
     AddSprite(sprite);
 
     SetUpdate(Update);
-    SetFixedUpdate(Update);
+    SetFixedUpdate(FixedUpdate);
 }
-
 ```
 
 Example game where a ball is forced to the mouse:
@@ -199,7 +216,7 @@ void Init() {
 HeliumInit("Ball", Init);
 ```
 
-## Everything you can use
+## Everything You Can Use
 
 ```c
 typedef struct {
@@ -277,7 +294,9 @@ void SetRender(F);
 void SetKeyDown(F);
 void SetKeyUp(F);
 void SetMouseDown(F);
-void SetMouseUp(F);
+void
+
+ SetMouseUp(F);
 void SetMouseMove(F);
 void SetMouseWheel(F);
 void SetQuit(F);
@@ -319,5 +338,4 @@ void ApplyForce(Sprite *sprite, Vec2 force, float t);
 void ApplyGravity(Sprite *sprite, float dt);
 bool SpritesCollide(Sprite *s1, Sprite *s2);
 Sprite *GetCollidingSprite(Sprite *sprite);
-
 ```
