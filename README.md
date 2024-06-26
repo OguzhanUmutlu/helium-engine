@@ -12,7 +12,7 @@
 - Run `pacman -S mingw-w64-ucrt-x86_64-gcc`
 - Run `pacman -S mingw-w64-x86_64-SDL2`
 - Run `pacman -S mingw-w64-x86_64-SDL2_image`
-- And that's it! You can now continue on from [here](#Making-the-game).
+- And that's it! You can now continue on from [here](#making-the-game).
 
 ### MacOS/Linux/WSL Installation
 
@@ -21,7 +21,7 @@
 - `sudo apt-get install python3`
 - `sudo apt-get install libsdl2-dev`
 - `sudo apt-get install libsdl2-image-dev`
-- And that's it! You can now continue on from [here](#Making-the-game).
+- And that's it! You can now continue on from [here](#making-the-game).
 
 ## Making the game
 
