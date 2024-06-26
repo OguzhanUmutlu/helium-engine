@@ -7,7 +7,6 @@
 - Install Python from: <https://www.python.org/downloads/>
 - Install the latest version of the engine from: <https://github.com/OguzhanUmutlu/helium-game-engine/releases/latest> (The file name should be in the form: Helium-X.X.X-win32.zip)
 - Extract the zip you've installed to a folder
-- Run `update_sdl.cmd`
 - Install MSYS2 from: <https://www.msys2.org/>
 - Run `pacman -Syu` in MSYS2 shell
 - Run `pacman -S mingw-w64-ucrt-x86_64-gcc`

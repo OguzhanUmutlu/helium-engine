@@ -5,3 +5,5 @@ engine/lib
 engine/obj
 example/bin
 releases
+scripts/SDL2.dll
+scripts/SDL2_image.dll
