@@ -1,0 +1,7 @@
+.git
+.stuff
+.vscode
+engine/lib
+engine/obj
+example/bin
+releases
